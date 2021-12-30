@@ -19,7 +19,7 @@ func file_exists(path string) bool {
 func getAvatar(c *gin.Context) {
 	av := c.Param("id")
 	for _, ext := range imgExt {
-		file := fmt.Sprintf("./avatars/%s.%s", string(av), ext)
+		file := fmt.Sprintf("./avatars/%s.%s", av, ext)
 		if file_exists(file) {
 			file_bytes, _ := ioutil.ReadFile(file)
 
