@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"net/http"
 	"os"
 
@@ -21,9 +20,7 @@ func getAvatar(c *gin.Context) {
 	for _, ext := range imgExt {
 		file := fmt.Sprintf("./avatars/%s.%s", av, ext)
 		if file_exists(file) {
-			file_bytes, _ := ioutil.ReadFile(file)
-
-			c.Writer.Write(file_bytes)
+			c.File(file)
 			return
 		}
 	}
