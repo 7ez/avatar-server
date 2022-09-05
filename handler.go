@@ -25,6 +25,11 @@ func getAvatar(c *gin.Context) {
 		}
 	}
 
+	file := "./avatars/default.png"
+	if file_exits(file) {
+	    c.File(file)
+	    return
+	}
+	
 	c.String(http.StatusNotFound, "Avatar not found")
-	return
 }
